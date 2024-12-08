@@ -13,7 +13,7 @@ def prediction(imgs):
     images = [image.astype('float32') / 255 for image in images]
     images = np.stack(images)
     # Load the model
-    model = keras.models.load_model('model.h5')
+    model = keras.models.load_model('model2.h5')
     # Predict
     predictions = model.predict(images)
     labels = []

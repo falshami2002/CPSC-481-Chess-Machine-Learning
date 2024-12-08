@@ -7,13 +7,13 @@ from keras.preprocessing.image import ImageDataGenerator
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 test_generator = test_datagen.flow_from_directory(
-        'C:\\Users\\Firas\\Downloads\\ChessVision-master\\squares\\validation',
+        'C:\\Users\\Firas\\Documents\\GitHub\\CPSC-481-Chess-Machine-Learning\\squares\\validation',
         target_size=(64, 64),
         batch_size=32,
         class_mode='categorical')
 
 # Load model
-model = keras.models.load_model('model.h5')
+model = keras.models.load_model('model2.h5')
 
 # Test
 loss, accuracy = model.evaluate(test_generator)

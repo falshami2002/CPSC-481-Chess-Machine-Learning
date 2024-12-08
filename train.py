@@ -6,7 +6,7 @@ from keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(rescale=1./255)
 
 train_generator = train_datagen.flow_from_directory(
-        'C:\\Users\\Firas\\Documents\\GitHub\\chess-ai\\chess-recognition\\squares\\training',
+        'C:\\Users\\Firas\\Documents\\GitHub\\CPSC-481-Chess-Machine-Learning\\squares\\training',
         target_size=(64, 64),
         batch_size=32,
         class_mode='categorical')
@@ -30,4 +30,4 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 history = model.fit(train_generator, epochs=10)
 
 # Save model
-model.save("model.h5")
+model.save("model2.h5")
