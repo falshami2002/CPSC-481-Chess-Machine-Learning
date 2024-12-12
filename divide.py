@@ -3,14 +3,12 @@ import numpy as np
 
 def divideBoard(im):
     # Resize image to uniform size
-    img = cv2.resize(im, (640, 640))
+    img = cv2.resize(np.array(im), (640, 640))
 
     # Convert to grayscale
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
     # Binary image threshold
     _, thresh = cv2.threshold(gray, 180, 255, cv2.THRESH_BINARY)
-
     # Detect edges and dilate
     edges = cv2.Canny(thresh, 100, 200)
     kernel = np.ones((3, 3), np.uint8)
@@ -18,7 +16,6 @@ def divideBoard(im):
 
     # Hough Lines P
     lines = cv2.HoughLinesP(dilation, 1, np.pi / 180, 100, None, 100, 10)
-
     # Get the list of x and y coordinates for each line
     x_coords = [x1 for line in lines for x1, y1, x2, y2 in [line[0]]]
     for line in lines:
