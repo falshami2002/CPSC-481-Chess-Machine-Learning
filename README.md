@@ -1,8 +1,10 @@
-# chess-ai
-Turn an image of a chess position into a FEN string for analysis engines
-
-This is my first python project. Currently the program takes in an image of a digital chess position and mainpulates
-the image using opencv methods to divide it into the 64 individual squares. A CNN then takes thosse 64 images and 
-recognizes it as empty or as being occupied by a piece and recognizes the type and color of piece. Based on those
-predicted labels, the program then converts that information to FEN (Forsyth–Edwards Notation) which can be 
-plugged into any chess analysis board to analyze the position.
+The layout of the project is simple and each file serves a specific function. The 
+train.py file was used to train the model using the data in the squares folder. On 
+the other hand, the test.py file was used to test the accuracy of the model which is
+saved as model2.h5. The divide.py file does all the image processing required to 
+detect the lines to divide the board on and then divides it into sub-images. The 
+predict.py file then uses the model to predict what pieces are in each sub-image. This
+array of predictions is then passed onto translate.py which translates that data 
+into an FEN string. The FEN string is then given to the evaluation.py file which 
+gets the evaluation of the position through a call to the stockfish API. This is all
+displayed in the GUI which is in the main.py file. 
